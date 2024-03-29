@@ -1,20 +1,18 @@
-from PySide6.QtWidgets import QApplication
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget
+from ui_Main import Ui_MainWindow
+import sys
 
-app = QApplication([])
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super(MainWindow,self).__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
 
-# Load the UI file and create the dialog
-dialog = QWidgets()
-ui = Ui_Dialog()
-ui.setupUi(dialog)
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    app.setStyle('Fusion')
+    window = MainWindow()
+    window.show()
 
-# Assume you have read the WorkDirPath value from the configuration file
-work_dir_path = "/path/to/your/directory"
-
-# Set the WorkDirPath value to the WorkDirFolder QLineEdit
-ui.WorkDirFolder.setText(work_dir_path)
-
-# Show the dialog
-dialog.show()
-
-# Run the application loop
-app.exec()
+    sys.exit(app.exec())
